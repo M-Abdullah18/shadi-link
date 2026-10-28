@@ -1,7 +1,7 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
-import { AdminAuthState, createAdminAuthRouter } from './auth';
+import { AdminAuthState, createAdminAuthRouter } from './auth.js';
 
 /**
  * Creates and configures the Express API application with all security middleware,

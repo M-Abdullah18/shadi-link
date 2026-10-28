@@ -31,18 +31,18 @@ export async function initializeAdminAuth(): Promise<AdminAuthState> {
   // a secure 32-byte cryptographic random password is generated in memory so the container
   // starts successfully and passes deployment health checks.
   if (isProd && rawPassword) {
-    if (rawPassword.length < 8) {
-      throw new Error('[ShaadiLink Security Error] ADMIN_PASSWORD must be at least 8 characters in production.');
+    if (rawPassword.length < 12) {
+      throw new Error('[ShaadiLink Security Error] ADMIN_PASSWORD must be at least 12 characters in production.');
     }
   }
 
   // Normalize email and secret (with safe random fallback if unset)
   const adminEmailNormalized = (rawEmail || 'admin@example.com').toLowerCase();
   const sessionSecret = rawSecret || crypto.randomBytes(32).toString('hex');
-  const isConfigured = Boolean(rawEmail && rawPassword && rawPassword.length >= 8);
+  const isConfigured = Boolean(rawEmail && rawPassword && rawPassword.length >= 12);
 
   // Use the provided password or an unguessable ephemeral random string (64 hex characters) if unset
-  const passwordToHash = (rawPassword && rawPassword.length >= 8)
+  const passwordToHash = (rawPassword && rawPassword.length >= 12)
     ? rawPassword
     : crypto.randomBytes(32).toString('hex');
 

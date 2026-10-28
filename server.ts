@@ -4,8 +4,8 @@ import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import { initializeAdminAuth } from './server/auth';
-import { createApp } from './server/app';
+import { initializeAdminAuth } from './server/auth.js';
+import { createApp } from './server/app.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

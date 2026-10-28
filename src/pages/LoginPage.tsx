@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail, HeartHandshake, ArrowRight, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { loginAdmin, checkAdminAuth } from '../api/auth';
+import { loginAdmin, checkAdminAuth, AuthApiError } from '../api/auth';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -47,19 +47,33 @@ export const LoginPage: React.FC = () => {
       }, 400);
     } catch (err: any) {
       setLoading(false);
-      // Friendly, non-technical error messages
-      const rawMsg = err?.message || '';
-      if (rawMsg.includes('Too many') || rawMsg.includes('15 minutes')) {
-        setError(
-          isUrdu
-            ? 'بہت زیادہ کوششیں کی گئیں۔ براہ کرم ۱۵ منٹ بعد دوبارہ کوشش کیجیے۔'
-            : 'Too many login attempts. Please try again in 15 minutes.'
-        );
+      if (err instanceof AuthApiError) {
+        if (err.code === 'UNAUTHORIZED' || err.status === 401) {
+          setError(
+            isUrdu
+              ? 'درج کردہ ای میل یا پاس ورڈ درست نہیں ہے۔'
+              : 'Invalid email or password'
+          );
+        } else if (err.code === 'RATE_LIMITED' || err.status === 429) {
+          setError(
+            isUrdu
+              ? 'بہت زیادہ کوششیں کی گئیں۔ براہ کرم ۱۵ منٹ بعد دوبارہ کوشش کیجیے۔'
+              : 'Too many login attempts. Please try again in 15 minutes.'
+          );
+        } else {
+          // 5xx or non-JSON response from server
+          setError(
+            isUrdu
+              ? 'سرور جواب نہیں دے رہا ہے۔ براہ کرم کچھ دیر بعد دوبارہ کوشش کیجیے۔'
+              : 'The server is not responding. Please try again later.'
+          );
+        }
       } else {
+        // Network failure or unexpected non-JSON response
         setError(
           isUrdu
-            ? 'درج کردہ ای میل یا پاس ورڈ درست نہیں ہے۔'
-            : 'Invalid email or password. Please try again.'
+            ? 'سرور جواب نہیں دے رہا ہے۔ براہ کرم کچھ دیر بعد دوبارہ کوشش کیجیے۔'
+            : 'The server is not responding. Please try again later.'
         );
       }
     }
