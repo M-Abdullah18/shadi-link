@@ -1,0 +1,76 @@
+import { TemplateManifest } from '../types';
+import { ChandniRaatTemplate, ChandniRaatThumbnail } from './index';
+
+export const chandniRaatManifest: TemplateManifest = {
+  slug: 'chandni-raat',
+  name: 'Chandni Raat',
+  nameUrdu: 'چاندنی رات',
+  code: 'D04',
+  mood: {
+    en: 'Romantic, moonlit night, starry elegance',
+    ur: 'رومانوی، چاندنی رات، ستاروں کی چمک اور دلفریب حسن',
+  },
+  palette: {
+    primary: '#191970',
+    secondary: '#121212',
+    accent: '#E8C46A',
+    background: '#0D1117',
+    text: '#FCFBF7',
+    previewColors: ['#191970', '#121212', '#E8C46A', '#FCFBF7'],
+  },
+  description: {
+    en: 'An enchanting moonlit evening invitation adorned with twinkling celestial stars, a glowing golden crescent moon, and gliding nocturnal sparrows.',
+    ur: 'ستاروں بھری چاندنی رات پر مبنی طلسماتی دعوت نامہ، جس میں دمکتا چاند، جھلملاتے تارے اور افق پر اڑتی خوبصورت فاختائیں شامل ہیں۔',
+  },
+  supportedLanguages: ['en', 'ur'],
+  editableFields: [
+    { id: 'groom', labelEn: 'Groom Name', labelUr: 'دولہا کا نام', type: 'text', required: true },
+    { id: 'bride', labelEn: 'Bride Name', labelUr: 'دلہن کا نام', type: 'text', required: true },
+    { id: 'groomParents', labelEn: "Groom's Parents", labelUr: 'والدین دولہا', type: 'text' },
+    { id: 'brideParents', labelEn: "Bride's Parents", labelUr: 'والدین دلہن', type: 'text' },
+    { id: 'weddingDate', labelEn: 'Wedding Date', labelUr: 'شادی کی تاریخ', type: 'date', required: true },
+    { id: 'customMessage', labelEn: 'Special Note', labelUr: 'خصوصی پیغام', type: 'textarea' },
+  ],
+  sampleData: {
+    id: 'demo-chandni-raat',
+    designCode: 'D04',
+    designSlug: 'chandni-raat',
+    coupleNames: {
+      groom: 'Daniyal Jahangir',
+      groomUr: 'دانیال جہانگیر',
+      bride: 'Zainab Siddiqui',
+      brideUr: 'زینب صدیقی',
+    },
+    parentsNames: {
+      groomParents: 'Dr. & Mrs. Jahangir Iqbal',
+      groomParentsUr: 'ڈاکٹر و محترمہ جہانگیر اقبال',
+      brideParents: 'Prof. & Mrs. Mansoor Siddiqui',
+      brideParentsUr: 'پروفیسر و محترمہ منصور صدیقی',
+    },
+    weddingDate: '2026-12-31T20:30:00+05:00',
+    customMessage: 'Under the starlit sky and the gentle glow of the moon, we invite you to bless the union of our hearts.',
+    customMessageUr: 'چاندنی رات کے حسیں سائے میں اور ستاروں کی گواہی کے ساتھ، ہم آپ کو اپنے نئے سفر کے آغاز پر دعاؤں کی التجا کرتے ہیں۔',
+    events: [
+      {
+        id: 'evt-chandni-nikkah',
+        name: 'Moonlit Nikkah & Reception',
+        nameUr: 'نکاحِ چاندنی و استقبالیہ',
+        date: 'Thursday, 31st December 2026',
+        dateUr: 'جمعرات، ۳۱ دسمبر ۲۰۲۶',
+        time: '08:30 PM PKT',
+        timeUr: 'رات ۸:۳۰ بجے',
+        venueName: 'Serena Sheesh Mahal Gardens',
+        venueNameUr: 'سرینا شیش محل گارڈنز',
+        venueAddress: 'Khayaban-e-Suhrawardy, Sector G-5/1',
+        venueAddressUr: 'خیابانِ سہروردی، سیکٹر جی ۵/۱',
+        city: 'Islamabad',
+        cityUr: 'اسلام آباد',
+        googleMapsUrl: 'https://maps.google.com/?q=Serena+Hotel+Islamabad',
+        dressCode: 'Midnight Glamour / Silver & Gold Accents',
+        dressCodeUr: 'روپہلی اور سنہری جھلک کے ساتھ شاندار لباس',
+      },
+    ],
+  },
+  component: ChandniRaatTemplate,
+  thumbnail: ChandniRaatThumbnail,
+};

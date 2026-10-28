@@ -1,0 +1,6 @@
+{
+  "name": "ShaadiLink - Digital Wedding Invitations & RSVP Platform",
+  "description": "ShaadiLink is a premium digital wedding invitation and guest RSVP management platform designed for Pakistani weddings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
