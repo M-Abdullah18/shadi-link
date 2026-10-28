@@ -115,6 +115,8 @@ export function createAdminAuthRouter(): Router {
   const isProd = process.env.NODE_ENV === 'production';
 
   // Rate limiter: Max 5 attempts per 15 minutes per IP
+  // Note: this in-memory rate limit is per-instance on serverless environments (e.g. Vercel)
+  // and will move to the persistent database later.
   const loginLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 5,
