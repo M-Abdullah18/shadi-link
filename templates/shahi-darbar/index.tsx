@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TemplateComponentProps } from '../types';
-import { CountdownTimer } from '../common/CountdownTimer';
+import { SaveTheDateCountdown } from '../_shared/SaveTheDateCountdown';
 import { MapPin, Calendar, Clock, Crown, Sparkles, KeyRound } from 'lucide-react';
 
 export const ShahiDarbarThumbnail: React.FC<{ className?: string }> = ({ className = 'w-full h-48' }) => {
@@ -155,15 +155,22 @@ export const ShahiDarbarTemplate: React.FC<TemplateComponentProps> = ({
               )}
             </div>
 
-            {/* Countdown */}
-            <CountdownTimer
-              targetDate={data.weddingDate}
+            {/* Save the Date & Live Countdown */}
+            <SaveTheDateCountdown
+              data={data}
               language={language}
+              fontFamilyHeading='"Cinzel", serif'
               palette={{
                 cardBg: '#FAF6EE',
                 border: '#E6CA65',
-                numberColor: '#800020',
-                labelColor: '#002366',
+                accent: '#E6CA65',
+                primaryText: '#800020',
+                secondaryText: '#002366',
+                divider: '#E6CA65',
+                countdownCardBg: '#FAF6EE',
+                countdownBorder: '#E6CA65',
+                countdownNumberColor: '#800020',
+                countdownLabelColor: '#002366',
               }}
             />
 

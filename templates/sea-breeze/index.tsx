@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { TemplateComponentProps } from '../types';
-import { CountdownTimer } from '../common/CountdownTimer';
+import { SaveTheDateCountdown } from '../_shared/SaveTheDateCountdown';
 import { MapPin, Calendar, Clock, Sparkles, Mail, Heart, Eye } from 'lucide-react';
 
 export const SeaBreezeThumbnail: React.FC<{ className?: string }> = ({ className = 'w-full h-48' }) => {
@@ -244,15 +244,22 @@ export const SeaBreezeTemplate: React.FC<TemplateComponentProps> = ({
               )}
             </div>
 
-            {/* Countdown Timer */}
-            <CountdownTimer
-              targetDate={data.weddingDate}
+            {/* Save the Date & Live Countdown */}
+            <SaveTheDateCountdown
+              data={data}
               language={language}
+              fontFamilyHeading='"Cinzel", serif'
               palette={{
                 cardBg: '#FFFFFF',
                 border: '#87CEEB',
-                numberColor: '#1F3A44',
-                labelColor: '#48A9A6',
+                accent: '#48A9A6',
+                primaryText: '#1F3A44',
+                secondaryText: '#48A9A6',
+                divider: '#87CEEB',
+                countdownCardBg: '#FFFFFF',
+                countdownBorder: '#87CEEB',
+                countdownNumberColor: '#1F3A44',
+                countdownLabelColor: '#48A9A6',
               }}
             />
 

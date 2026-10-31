@@ -1,6 +1,6 @@
 import React from 'react';
 import { TemplateComponentProps } from '../types';
-import { CountdownTimer } from '../common/CountdownTimer';
+import { SaveTheDateCountdown } from '../_shared/SaveTheDateCountdown';
 import { MapPin, Calendar, Clock, Moon, Sparkles, Star } from 'lucide-react';
 
 export const ChandniRaatThumbnail: React.FC<{ className?: string }> = ({ className = 'w-full h-48' }) => {
@@ -138,15 +138,22 @@ export const ChandniRaatTemplate: React.FC<TemplateComponentProps> = ({
             )}
           </div>
 
-          {/* Countdown to the Moonlit Night */}
-          <CountdownTimer
-            targetDate={data.weddingDate}
+          {/* Save the Date & Live Countdown */}
+          <SaveTheDateCountdown
+            data={data}
             language={language}
+            fontFamilyHeading='"Cinzel", serif'
             palette={{
               cardBg: 'rgba(25, 25, 112, 0.4)',
               border: '#E8C46A',
-              numberColor: '#E8C46A',
-              labelColor: '#FCFBF7',
+              accent: '#E8C46A',
+              primaryText: '#E8C46A',
+              secondaryText: '#FCFBF7',
+              divider: '#E8C46A',
+              countdownCardBg: 'rgba(25, 25, 112, 0.4)',
+              countdownBorder: '#E8C46A',
+              countdownNumberColor: '#E8C46A',
+              countdownLabelColor: '#FCFBF7',
             }}
           />
 

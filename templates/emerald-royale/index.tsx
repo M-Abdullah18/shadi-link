@@ -1,6 +1,6 @@
 import React from 'react';
 import { TemplateComponentProps } from '../types';
-import { CountdownTimer } from '../common/CountdownTimer';
+import { SaveTheDateCountdown } from '../_shared/SaveTheDateCountdown';
 import { MapPin, Calendar, Clock, Sparkles } from 'lucide-react';
 
 export const EmeraldRoyaleThumbnail: React.FC<{ className?: string }> = ({ className = 'w-full h-48' }) => {
@@ -93,15 +93,22 @@ export const EmeraldRoyaleTemplate: React.FC<TemplateComponentProps> = ({
             )}
           </div>
 
-          {/* Live Countdown */}
-          <CountdownTimer
-            targetDate={data.weddingDate}
+          {/* Save the Date & Live Countdown */}
+          <SaveTheDateCountdown
+            data={data}
             language={language}
+            fontFamilyHeading='"Playfair Display", serif'
             palette={{
               cardBg: '#022419',
               border: '#D4AF37',
-              numberColor: '#D4AF37',
-              labelColor: '#FCFBF7',
+              accent: '#D4AF37',
+              primaryText: '#FCFBF7',
+              secondaryText: '#D4AF37',
+              divider: '#D4AF37',
+              countdownCardBg: '#022419',
+              countdownBorder: '#D4AF37',
+              countdownNumberColor: '#D4AF37',
+              countdownLabelColor: '#FCFBF7',
             }}
           />
 

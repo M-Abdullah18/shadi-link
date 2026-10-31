@@ -5,6 +5,8 @@ import { HomePage } from '../pages/HomePage';
 import { HealthCheckPage } from '../pages/HealthCheckPage';
 import { LoginPage } from '../pages/LoginPage';
 import { DashboardPage } from '../pages/DashboardPage';
+import { WeddingFormPage } from '../pages/WeddingFormPage';
+import { WeddingPreviewPage } from '../pages/WeddingPreviewPage';
 import { PublicInvitationPage } from '../pages/PublicInvitationPage';
 import { HostPanelPage } from '../pages/HostPanelPage';
 import { DesignDemoPage } from '../pages/DesignDemoPage';
@@ -30,6 +32,18 @@ export const router = createBrowserRouter([
       {
         path: 'admin/dashboard',
         element: <DashboardPage />,
+      },
+      {
+        path: 'admin/weddings/new',
+        element: <WeddingFormPage />,
+      },
+      {
+        path: 'admin/weddings/:id/edit',
+        element: <WeddingFormPage />,
+      },
+      {
+        path: 'admin/weddings/:id/preview',
+        element: <WeddingPreviewPage />,
       },
       {
         path: 'demo/:designSlug',

@@ -27,6 +27,7 @@ export interface TemplateEvent {
   googleMapsUrl?: string;
   dressCode?: string;
   dressCodeUr?: string;
+  startsAt?: string | Date;
 }
 
 export interface TemplateWeddingData {
